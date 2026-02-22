@@ -6,12 +6,15 @@
     <style>
         /* Подключаем шрифт Minecraft */
         @font-face {
-            font-family: 'Minecraft';
-            src: url('minecraft.ttf'); /* Положи файл шрифта в папку docs */
+            font-family: 'MinecraftCustom';
+            /* Добавляем ./ перед названием, чтобы путь был точнее */
+            src: url('./minecraft.ttf') format('truetype'); 
+            font-weight: normal;
+            font-style: normal;
         }
 
         body {
-            background-image: url('bg.png'); /* Твоя сгенерированная грязь */
+            background-image: url('bg.png');
             background-repeat: repeat;
             background-size: 64px;
             image-rendering: pixelated;
@@ -21,7 +24,11 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            font-family: 'Minecraft', 'Courier New', monospace;
+            /* Указываем наш шрифт первым */
+            font-family: 'MinecraftCustom', 'Courier New', monospace;
+        }
+        .title, .mc-button, .splash, .footer {
+            font-family: 'MinecraftCustom', sans-serif;
         }
 
         .title {
