@@ -4,107 +4,97 @@
     <meta charset="UTF-8">
     <title>Minecraft - LegacyBack</title>
     <style>
-        @font-face {
-            font-family: 'Minecraft';
-            src: url('minecraft.ttf');
-        }
+    @font-face {
+        font-family: 'Minecraft';
+        src: url('minecraft.ttf');
+    }
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Minecraft', sans-serif;
-            overflow: hidden;
-            background-color: #1e1e1e;
-        }
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Minecraft', sans-serif;
+        /* Убираем черный цвет фона, ставим грязь на весь экран */
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('bg.png');
+        background-repeat: repeat;
+        background-size: 64px;
+        image-rendering: pixelated;
+    }
 
-        /* Задний фон (грязь) */
-        .bg-overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bg.png');
-            background-repeat: repeat;
-            background-size: 64px;
-            image-rendering: pixelated;
-            z-index: -1;
-        }
+    /* Теперь этот контейнер не имеет своего фона, он прозрачный */
+    .menu-container {
+        width: 400px;
+        text-align: center;
+        z-index: 1;
+    }
 
-        .menu-container {
-            width: 400px;
-            text-align: center;
-        }
+    .logo-container {
+        position: relative;
+        margin-bottom: 50px;
+    }
 
-        .logo-container {
-            position: relative;
-            margin-bottom: 50px;
-        }
+    .logo-text {
+        font-size: 64px;
+        color: #D1D1D1;
+        text-shadow: 4px 4px 0px #3F3F3F;
+        letter-spacing: 4px;
+    }
 
-        .logo-text {
-            font-size: 64px;
-            color: #D1D1D1;
-            text-shadow: 4px 4px 0px #3F3F3F;
-            letter-spacing: 4px;
-        }
+    .splash {
+        position: absolute;
+        color: #FFFF55;
+        font-size: 20px;
+        right: -20px;
+        bottom: -15px;
+        transform: rotate(-20deg);
+        text-shadow: 2px 2px 0px #3F3F00;
+        animation: bounce 0.5s infinite alternate;
+    }
 
-        .splash {
-            position: absolute;
-            color: #FFFF55;
-            font-size: 20px;
-            right: -20px;
-            bottom: -15px;
-            transform: rotate(-20deg);
-            text-shadow: 2px 2px 0px #3F3F00;
-            animation: bounce 0.5s infinite alternate;
-        }
+    @keyframes bounce {
+        from { transform: rotate(-20deg) scale(1); }
+        to { transform: rotate(-20deg) scale(1.1); }
+    }
 
-        @keyframes bounce {
-            from { transform: rotate(-20deg) scale(1); }
-            to { transform: rotate(-20deg) scale(1.1); }
-        }
+    .btn-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
 
-        /* Кнопки */
-        .btn-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+    .mc-btn {
+        background: #6e6e6e;
+        border: 2px solid #000;
+        box-shadow: inset 2px 2px #aaa, inset -2px -2px #333;
+        color: #E0E0E0;
+        padding: 12px;
+        text-decoration: none;
+        font-size: 18px;
+        cursor: pointer;
+    }
 
-        .mc-btn {
-            background: #6e6e6e;
-            border: 2px solid #000;
-            box-shadow: inset 2px 2px #aaa, inset -2px -2px #333;
-            color: #E0E0E0;
-            padding: 12px;
-            text-decoration: none;
-            font-size: 18px;
-            cursor: pointer;
-            box-sizing: border-box;
-        }
+    .mc-btn:hover {
+        background: #7ca8ff;
+        color: #fff;
+        border-color: #fff;
+    }
 
-        /* При наведении — только подсветка, без лишних рамок */
-        .mc-btn:hover {
-            background: #7ca8ff;
-            color: #fff;
-            border-color: #fff;
-        }
-
-        .footer-info {
-            position: absolute;
-            bottom: 5px;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 10px;
-            box-sizing: border-box;
-            color: white;
-            font-size: 14px;
-            text-shadow: 1px 1px #000;
-        }
-    </style>
+    .footer-info {
+        position: absolute;
+        bottom: 5px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 15px;
+        box-sizing: border-box;
+        color: white;
+        font-size: 14px;
+        text-shadow: 1px 1px #000;
+    }
+</style>
 </head>
 <body>
 
@@ -112,7 +102,7 @@
 
     <div class="menu-container">
         <div class="logo-container">
-            <div class="logo-text">MINECRAFT</div>
+            <div class="logo-text">LegacyBack</div>
             <div class="splash" id="splash-text">Loading...</div>
         </div>
 
