@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Minecraft - LegacyBack Menu</title>
+    <style>
+        /* Подключаем шрифт Minecraft */
+        @font-face {
+            font-family: 'Minecraft';
+            src: url('minecraft.ttf'); /* Положи файл шрифта в папку docs */
+        }
+
+        body {
+            background-image: url('bg.png'); /* Твоя сгенерированная грязь */
+            background-repeat: repeat;
+            background-size: 64px;
+            image-rendering: pixelated;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'Minecraft', 'Courier New', monospace;
+        }
+
+        .title {
+            color: #FFF;
+            font-size: 42px;
+            text-shadow: 4px 4px #3f3f3f;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 400px;
+        }
+
+        .mc-button {
+            position: relative;
+            background: #6e6e6e;
+            border: 2px solid #000;
+            /* Эффект объема как в старом меню */
+            box-shadow: inset 2px 2px #aaa, inset -2px -2px #333;
+            color: #E0E0E0;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            text-align: center;
+            cursor: pointer;
+            display: block;
+        }
+
+        .mc-button:hover {
+            background: #55a02a;
+            box-shadow: inset 2px 2px #88ff55, inset -2px -2px #224411;
+            color: #FFF;
+        }
+
+        .splash {
+            color: #ffff55;
+            font-size: 18px;
+            text-shadow: 2px 2px #3f3f00;
+            transform: rotate(-15deg);
+            position: absolute;
+            top: -25px;
+            right: -40px;
+            animation: bounce 0.5s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: rotate(-15deg) scale(1); }
+            to { transform: rotate(-15deg) scale(1.1); }
+        }
+
+        .footer {
+            margin-top: 50px;
+            color: #AAA;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="position: relative;">
+        <h1 class="title">LEGACYBACK MOD</h1>
+        <div class="splash">OLD IS GOLD!</div>
+    </div>
+
+    <div class="menu">
+        <a href="https://modrinth.com" class="mc-button">MODRINTH</a>
+        <a href="https://curseforge.com" class="mc-button">CURSEFORGE</a>
+        <a href="https://github.com" class="mc-button">GITHUB SOURCE</a>
+        <a href="#" class="mc-button">CHANGELOG</a>
+        <a href="#" class="mc-button" style="margin-top: 10px; background: #444;">REPORT A BUG</a>
+    </div>
+
+    <div class="footer">
+        Copyright Mojang AB. Do not distribute!
+    </div>
+
+</body>
+</html>
