@@ -22,10 +22,11 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('bg.png');
-            background-size: 64px;
-            filter: blur(4px); /* Эффект размытия как в меню */
-            transform: scale(1.1);
+            /* Убрали фильтр блюра и лишний масштаб */
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('bg.png');
+            background-repeat: repeat;
+            background-size: 64px; /* Размер плитки грязи */
+            image-rendering: pixelated; /* Чтобы пиксели были четкими */
             z-index: -1;
         }
 
