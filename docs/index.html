@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Minecraft 1.8 - LegacyBack</title>
+    <title>Minecraft</title>
     <style>
         @font-face {
             font-family: 'Minecraft';
@@ -13,62 +13,68 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-family: 'Minecraft', sans-serif;
+            overflow: hidden;
+            /* Темный фон за грязью, как в оригинале */
+            background-color: #1e1e1e;
         }
 
-        /* Задний фон: размытая панорама (используем твою грязь или просто цвет, пока нет скрина) */
-        .background {
+        /* Фоновая текстура грязи */
+        .bg-overlay {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            /* Убрали фильтр блюра и лишний масштаб */
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('bg.png');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bg.png');
             background-repeat: repeat;
-            background-size: 64px; /* Размер плитки грязи */
-            image-rendering: pixelated; /* Чтобы пиксели были четкими */
+            background-size: 64px;
+            image-rendering: pixelated;
             z-index: -1;
         }
 
-        .main-menu {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+        .menu-container {
+            width: 400px;
             text-align: center;
         }
 
-        /* Логотип (имитация из текста, если нет картинки) */
-        .logo {
-            font-size: 60px;
-            color: #BBB;
-            text-shadow: 4px 4px 0px #3F3F3F;
-            margin-bottom: 40px;
-            letter-spacing: 5px;
+        .logo-container {
+            position: relative;
+            margin-bottom: 60px;
         }
 
+        /* Имитация объемного логотипа Minecraft */
+        .logo-text {
+            font-size: 64px;
+            color: #D1D1D1;
+            text-shadow: 4px 4px 0px #3F3F3F;
+            letter-spacing: 4px;
+            font-weight: bold;
+        }
+
+        /* Тот самый сплэш */
         .splash {
+            position: absolute;
             color: #FFFF55;
             font-size: 20px;
-            position: relative;
-            top: -30px;
-            left: 120px;
+            right: -30px;
+            bottom: -10px;
             transform: rotate(-20deg);
             text-shadow: 2px 2px 0px #3F3F00;
-            animation: splashAnim 0.5s infinite alternate;
+            animation: bounce 0.5s infinite alternate;
         }
 
-        @keyframes splashAnim {
+        @keyframes bounce {
             from { transform: rotate(-20deg) scale(1); }
-            to { transform: rotate(-20deg) scale(1.05); }
+            to { transform: rotate(-20deg) scale(1.1); }
         }
 
-        .button-container {
+        /* Кнопки 1 в 1 как в 1.8 */
+        .btn-list {
             display: flex;
             flex-direction: column;
-            gap: 6px;
-            width: 400px;
+            gap: 12px;
         }
 
         .mc-btn {
@@ -80,88 +86,86 @@
             text-decoration: none;
             font-size: 20px;
             cursor: pointer;
-            display: block;
-            width: 100%;
-            box-sizing: border-box;
+            transition: none;
         }
 
         .mc-btn:hover {
-            background: #7ca8ff; /* Голубая подсветка как в 1.8 при наведении */
-            border-color: #fff;
+            background: #7ca8ff;
             color: #fff;
+            border-color: #fff;
             outline: 2px solid #000;
         }
 
-        .version-info {
+        .btn-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .footer-version {
             position: absolute;
             bottom: 5px;
             left: 5px;
-            color: #FFF;
-            text-shadow: 1px 1px 0px #000;
-            font-size: 14px;
+            color: white;
+            font-size: 16px;
+            text-shadow: 1px 1px #000;
         }
 
-        .copyright {
+        .footer-copyright {
             position: absolute;
             bottom: 5px;
             right: 5px;
-            color: #FFF;
-            text-shadow: 1px 1px 0px #000;
-            font-size: 14px;
+            color: white;
+            font-size: 16px;
+            text-shadow: 1px 1px #000;
         }
     </style>
 </head>
 <body>
 
-    <div class="background"></div>
+    <div class="bg-overlay"></div>
 
-    <div class="main-menu">
-        <div class="logo">
-            MINECRAFT
+    <div class="menu-container">
+        <div class="logo-container">
+            <div class="logo-text">MINECRAFT</div>
             <div class="splash" id="splash-text">Loading...</div>
         </div>
 
-        <div class="button-container">
+        <div class="btn-list">
             <a href="https://modrinth.com" class="mc-btn">Modrinth</a>
             <a href="https://curseforge.com" class="mc-btn">CurseForge</a>
             
-            <div style="display: flex; gap: 4px; width: 100%;">
+            <div class="btn-row">
                 <a href="https://github.com" class="mc-btn">GitHub</a>
-                <a href="#" class="mc-btn">Changelog</a>
+                <a href="#" class="mc-btn">Wiki</a>
             </div>
-            
-            <a href="#" class="mc-btn" style="margin-top: 12px; height: 40px; font-size: 16px;">Quit Game</a>
+
+            <a href="#" class="mc-btn" style="margin-top: 20px;">Quit Game</a>
         </div>
     </div>
 
-    <div class="version-info">Minecraft 1.20.1 (LegacyBack Mod)</div>
-    <div class="copyright">Copyright Mojang AB. Do not distribute!</div>
+    <div class="footer-version">Minecraft 1.20.1 (LegacyBack)</div>
+    <div class="footer-copyright">Copyright Mojang AB. Do not distribute!</div>
 
-<script>
-    // Список фраз в стиле Майнкрафта
-    const splashes = [
-        "OLD IS GOLD!",
-        "Alpha vibes!",
-        "Spam click active!",
-        "No more cooldowns!",
-        "Just like 2011!",
-        "Bring back the sword block!",
-        "Legacy is here!",
-        "1.8 Combat is back!",
-        "Made with nostalgia!",
-        "Oof!"
-    ];
+    <script>
+        const splashes = [
+            "OLD IS GOLD!",
+            "Alpha vibes!",
+            "No cooldowns!",
+            "Bring back blocking!",
+            "Legacy is here!",
+            "Oof!",
+            "Classic combat!",
+            "Since 2011!"
+        ];
 
-    // Функция выбора случайной фразы
-    function updateSplash() {
-        const splashElement = document.getElementById('splash-text');
-        const randomIndex = Math.floor(Math.random() * splashes.length);
-        splashElement.innerText = splashes[randomIndex];
-    }
+        function updateSplash() {
+            const splashElement = document.getElementById('splash-text');
+            const randomIndex = Math.floor(Math.random() * splashes.length);
+            splashElement.innerText = splashes[randomIndex];
+        }
+        updateSplash();
+    </script>
 
-    // Запускаем при загрузке страницы
-    updateSplash();
-</script>
-    
 </body>
 </html>
