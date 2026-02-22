@@ -118,7 +118,7 @@
     <div class="main-menu">
         <div class="logo">
             MINECRAFT
-            <div class="splash">LegacyBack Edition!</div>
+            <div class="splash" id="splash-text">Loading...</div>
         </div>
 
         <div class="button-container">
@@ -137,5 +137,31 @@
     <div class="version-info">Minecraft 1.20.1 (LegacyBack Mod)</div>
     <div class="copyright">Copyright Mojang AB. Do not distribute!</div>
 
+<script>
+    // Список фраз в стиле Майнкрафта
+    const splashes = [
+        "OLD IS GOLD!",
+        "Alpha vibes!",
+        "Spam click active!",
+        "No more cooldowns!",
+        "Just like 2011!",
+        "Bring back the sword block!",
+        "Legacy is here!",
+        "1.8 Combat is back!",
+        "Made with nostalgia!",
+        "Oof!"
+    ];
+
+    // Функция выбора случайной фразы
+    function updateSplash() {
+        const splashElement = document.getElementById('splash-text');
+        const randomIndex = Math.floor(Math.random() * splashes.length);
+        splashElement.innerText = splashes[randomIndex];
+    }
+
+    // Запускаем при загрузке страницы
+    updateSplash();
+</script>
+    
 </body>
 </html>
